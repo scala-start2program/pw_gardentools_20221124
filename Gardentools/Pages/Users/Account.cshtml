@@ -1,0 +1,76 @@
+﻿@page
+@model Gardentools.Pages.Users.AccountModel
+@{
+    ViewData["Title"] = "Mijn account";
+    ViewData["Email"] = "";
+    ViewData["Loginstyle"] = "visibility: visible; ";
+    ViewData["Logoutstyle"] = "visibility: hidden; ";
+    ViewData["Configstyle"] = "visibility: hidden; ";
+    if (!string.IsNullOrEmpty(Model.Availability.Email))
+    {
+        ViewData["Email"] = Model.Availability.Email;
+        ViewData["BasketCount"] = Model.Availability.BasketCount;
+        ViewData["Loginstyle"] = "visibility: hidden; ";
+        ViewData["Logoutstyle"] = "visibility: visible; ";
+        if (Model.Availability.IsAdmin)
+        {
+            ViewData["Configstyle"] = "visibility: visible; ";
+        }
+    }
+}
+<h1>Mijn account</h1>
+
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Me.Id" />
+                <div class="form-group">
+                    <label asp-for="Me.Email" class="control-label"></label>
+                    <input asp-for="Me.Email" class="form-control" />
+                    <span asp-validation-for="Me.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Me.Name" class="control-label"></label>
+                    <input asp-for="Me.Name" class="form-control" />
+                    <span asp-validation-for="Me.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Me.FirstName" class="control-label"></label>
+                    <input asp-for="Me.FirstName" class="form-control" />
+                    <span asp-validation-for="Me.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Me.Password" class="control-label"></label>
+                    <input asp-for="Me.Password" class="form-control" autocomplete="new-password" />
+                    <span asp-validation-for="Me.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Me.Address" class="control-label"></label>
+                    <input asp-for="Me.Address" class="form-control" />
+                    <span asp-validation-for="Me.Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Me.PostalCode" class="control-label"></label>
+                    <input asp-for="Me.PostalCode" class="form-control" />
+                    <span asp-validation-for="Me.PostalCode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Me.City" class="control-label"></label>
+                    <input asp-for="Me.City" class="form-control" />
+                    <span asp-validation-for="Me.City" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Me.Country" class="control-label"></label>
+                    <input asp-for="Me.Country" class="form-control" />
+                    <span asp-validation-for="Me.Country" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
